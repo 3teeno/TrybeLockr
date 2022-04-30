@@ -228,32 +228,32 @@ class SocialLoginState extends State<SocialLogin> with TickerProviderStateMixin{
                             SizedBox(
                               width: 15,
                             ),
-                            new GestureDetector(
-                              onTap: () {
-                                signInWithTwitter().then((result) {
-                                  if (result != null) {
-                                    UserDatas userdatas = new UserDatas();
-                                    userdatas.fullName = result.displayName;
-                                    userdatas.username = result.displayName;
-                                    userdatas.email = result.email;
-                                    userdatas.userImage = result.photoURL;
-                                    userdatas.socialId = result.uid;
-                                    userdatas.device_token = devicetoken;
-
-                                    print(result.displayName);
-                                    print(result.email);
-                                    print(result.photoURL);
-                                    print(result.uid);
-
-                                    socialsignin(userdatas);
-                                  } else {
-                                    print("error ${result}");
-                                  }
-                                });
-                              },
-                              child: Image.asset("assets/twitter.png",
-                                  height: 40, width: 40),
-                            ),
+                            // new GestureDetector(
+                            //   onTap: () {
+                            //     signInWithTwitter().then((result) {
+                            //       if (result != null) {
+                            //         UserDatas userdatas = new UserDatas();
+                            //         userdatas.fullName = result.displayName;
+                            //         userdatas.username = result.displayName;
+                            //         userdatas.email = result.email;
+                            //         userdatas.userImage = result.photoURL;
+                            //         userdatas.socialId = result.uid;
+                            //         userdatas.device_token = devicetoken;
+                            //
+                            //         print(result.displayName);
+                            //         print(result.email);
+                            //         print(result.photoURL);
+                            //         print(result.uid);
+                            //
+                            //         socialsignin(userdatas);
+                            //       } else {
+                            //         print("error ${result}");
+                            //       }
+                            //     });
+                            //   },
+                            //   child: Image.asset("assets/twitter.png",
+                            //       height: 40, width: 40),
+                            // ),
                             SizedBox(
                               width: 15,
                             ),
