@@ -19,7 +19,7 @@
         </intent>
     </queries>
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="${applicationName}"
         android:label="trybelocker"
         android:usesCleartextTraffic="true"
         android:allowBackup="false"
