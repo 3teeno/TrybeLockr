@@ -307,27 +307,27 @@ class ProfileState extends State<Profile> {
 
                       ],
                     ),
-                    seperationline(1),
-                    Container(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width,
-                      // height: 90,
-                      margin: EdgeInsets.only(left: 20, top: 20),
-                      child: gethistorytab(context),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    // seperationline(1),
+                    // Container(
+                    //   width: MediaQuery
+                    //       .of(context)
+                    //       .size
+                    //       .width,
+                    //   // height: 90,
+                    //   margin: EdgeInsets.only(left: 20, top: 20),
+                    //   child: gethistorytab(context),
+                    // ),
+                    // SizedBox(
+                    //   height: 10,
+                    // ),
                     seperationline(1),
                     Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Container(
                           margin: EdgeInsets.only(left: 20, top: 20),
                           child: Text(
-                            "TrybeList Folder",
-                            textAlign: TextAlign.left,
+                            "Trybe Folder",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle.italic,
@@ -349,12 +349,13 @@ class ProfileState extends State<Profile> {
                     ),
                     seperationline(1),
                     Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Container(
+
                           margin: EdgeInsets.only(left: 20, top: 20),
                           child: Text(
-                            "TrybeGroups",
-                            textAlign: TextAlign.left,
+                            "TrybeChats",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle.italic,
@@ -718,70 +719,80 @@ class ProfileState extends State<Profile> {
   }
 
   getprofilefolder(BuildContext context) {
-    return Column(children: <Widget>[
-      SizedBox(
-        height: 10,
-      ),
-      InkWell(
-        onTap: () {
-          showCreateFoler();
-        },
-        child: Row(
-          children: <Widget>[
-            SizedBox(
-              width: 15,
+    return Column(
+        children: <Widget>[
+          SizedBox(
+            height: 10,
+          ),
+          InkWell(
+            onTap: () {
+              showCreateFoler();
+            },
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 15,
+                ),
+                Image.asset(
+                  "assets/addwhite.png",
+                  height: 25,
+                  width: 25,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'New TrybeList Folder',
+                  style: TextStyle(color: Colors.white, fontSize: 12),
+                )
+              ],
             ),
-            Image.asset(
-              "assets/addwhite.png",
-              height: 25,
-              width: 25,
-              color: Colors.white,
+          ),
+          GridView(
+            scrollDirection: Axis.horizontal,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
             ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              'New TrybeList Folder',
-              style: TextStyle(color: Colors.white, fontSize: 12),
-            )
-          ],
-        ),
-      ),
-      Visibility(
-        visible: playlistdatalist!=null?playlistdatalist.length>0?true:false:false,
-        child: Container(
-          margin: EdgeInsets.only(left: 15, top: 15),
-          child: ListView.builder(
-              itemCount: playlistdatalist.length,
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context, rootNavigator: true).push(
-                        MaterialPageRoute(
-                            builder: (context) => GetPlaylistPost(
-                                playlistdatalist[index].id)));
-                  },
-                  child: Row(
-                    children: <Widget>[
-                      getImage(playlistdatalist[index]),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Center(
-                        child: Text(
-                          playlistdatalist[index].playlistName != null ? playlistdatalist[index].playlistName : "",
-                          style: TextStyle(
-                              color: Colors.white, fontSize: 12),
+            shrinkWrap: true,
+            children: <Widget>[
+            Visibility(
+              visible: playlistdatalist!=null?playlistdatalist.length>0?true:false:false,
+              child: Container(
+                margin: EdgeInsets.only(left: 15, top: 15),
+                child: ListView.builder(
+                    itemCount: playlistdatalist.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context, rootNavigator: true).push(
+                              MaterialPageRoute(
+                                  builder: (context) => GetPlaylistPost(
+                                      playlistdatalist[index].id)));
+                        },
+                        child: Column(
+                          children: <Widget>[
+                            getImage(playlistdatalist[index]),
+                            SizedBox(
+                              width: 60,
+                            ),
+                            Center(
+                              child: Text(
+                                playlistdatalist[index].playlistName != null ? playlistdatalist[index].playlistName : "",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12),
+                              ),
+                            )
+                          ],
                         ),
-                      )
-                    ],
-                  ),
-                );
-              }),
-        ),)
-    ]);
+                      );
+                    }),
+              ),)
+    ])
+        ]
+    );
   }
 
   Widget getImage(PlaylistData playlistData) {
